@@ -23,8 +23,8 @@ ENV KC_HTTP_PORT=8080
 ENV KC_PROXY_HEADERS=xforwarded
 
 # --- Ahorro de memoria ---
-# JVM: heap limitado, GC ligero, sin compilador C2, pilas y caché de código pequeñas
-ENV JAVA_OPTS_KC_HEAP="-XX:MaxRAMPercentage=45 -XX:InitialRAMPercentage=25 -XX:MaxMetaspaceSize=200m -XX:ReservedCodeCacheSize=48m -Xss512k -XX:+UseSerialGC -XX:TieredStopAtLevel=1 -XX:+ExitOnOutOfMemoryError"
+# JVM: heap limitado, sin compilador C2, pilas y caché de código pequeñas
+ENV JAVA_OPTS_KC_HEAP="-XX:MaxRAMPercentage=45 -XX:InitialRAMPercentage=25 -XX:MaxMetaspaceSize=200m -XX:ReservedCodeCacheSize=48m -Xss512k -XX:TieredStopAtLevel=1 -XX:+ExitOnOutOfMemoryError"
 # Memoria nativa: menos arenas de malloc (glibc reserva mucha memoria por hilo)
 ENV MALLOC_ARENA_MAX=2
 # Pool de conexiones a la base de datos pequeño (la Postgres free admite pocas conexiones)
